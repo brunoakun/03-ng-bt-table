@@ -10,9 +10,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## instalar ng-bootstrap
 ng add @ng-bootstrap/ng-bootstrap
 ## instalar bootstrap-icons
-npm i bootstrap-icons --save
+npm i bootstrap-icons --save<br>
 
-Then add this line to your styles.css file:
+Then add this line to your styles.css file:<br>
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 
 
