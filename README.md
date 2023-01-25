@@ -2,6 +2,8 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.0.
 
+Ejemplo de tablas bootstrap5 filtrables y ordenables<br>
+
 1.- ng g module tablas --routing<br />
 2.- ng g component tablas/tabla01<br />
 3.- En tablasModule, exportar los componentes<br />
