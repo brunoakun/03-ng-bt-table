@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Persona } from 'src/app/models/persona';
 import { DatosService } from 'src/app/services/datos.service';
-import { NgbPaginationModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbPaginationConfig, NgbPaginationModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -27,8 +27,7 @@ export class Tabla02Component implements OnInit {
 
   searchText = "";
 
-  constructor(private _datos: DatosService) {
-  }
+  constructor( private _datos: DatosService) {}
 
   ngOnInit(): void {
     this.loading = true;
@@ -44,7 +43,7 @@ export class Tabla02Component implements OnInit {
     });
   }
 
-  refreshPersonas() {    
+  refreshPersonas() {
     this.totalPersonas = this.personas.length;
     this.personasPag = this.personas.map((persona, i) => ({ id: i + 1, ...persona })).slice(
       (this.page - 1) * this.pageSize,

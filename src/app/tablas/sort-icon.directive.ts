@@ -1,4 +1,5 @@
-// Directiva para añadir un icono de flecha que indique el orden activo en una tabla ordenable
+// Directiva para añadir un icono de flecha 
+// que indique el orden activo en una tabla ordenable
 
 import { Directive, Input, ElementRef } from '@angular/core';
 
@@ -17,8 +18,8 @@ export class SortIconDirective {
     if (this.sortField !== this.currentField) {
       this.el.nativeElement.innerHTML = '';
     } else {
-      if (this.currentOrder === 'asc') this.el.nativeElement.innerHTML = ` <i class="bi bi-arrow-up-circle-fill"></i>`;
-      if (this.currentOrder === 'desc') this.el.nativeElement.innerHTML = ` <i class="bi bi-arrow-down-circle-fill"></i>`;
+      if (this.currentOrder === 'asc') this.el.nativeElement.innerHTML = ` <i class="bi bi-arrow-up-circle-fill text-secondary"></i>`;
+      if (this.currentOrder === 'desc') this.el.nativeElement.innerHTML = ` <i class="bi bi-arrow-down-circle-fill text-secondary"></i>`;
     }
   }
 

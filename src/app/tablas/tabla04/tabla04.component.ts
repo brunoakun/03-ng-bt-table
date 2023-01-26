@@ -12,21 +12,24 @@ export class Tabla04Component implements OnInit {
   personasTbl: Persona[] = [];    // Personas en la tabla
   personasPag: Persona[] = [];    // Personas a mostrar en página actual
 
+  // Ordenación
   sortField: string = '';
   sortOrder: 'asc' | 'desc' | undefined;
-  camposOrdenables = ['nombre', 'email', 'salario']
+  camposOrdenables = ['nombre', 'email', 'salario'];
 
+  // Paginación
   page: number = 1;
+  currentPage: number = 1;
   pageSize: number = 10;
   pageSizes = [5, 10, 15, 20];
-
   totalPersonas: number = 0;
-  currentPage: number = 1;
+
+  // Búsqueda
+  searchText = "";
 
   loading: boolean = false;
   errMsg: string = '';
 
-  searchText = "";
   constructor(private _datos: DatosService) { }
 
   ngOnInit() {
@@ -53,15 +56,13 @@ export class Tabla04Component implements OnInit {
   }
 
 
-  Search() {
+  search() {
     if (this.searchText) {
       let searchValue = this.searchText.toLowerCase();
-      console.log(searchValue);
-
-      this.personas = this.personasTbl.filter((persona: any) => {
+      this.personas = this.personasTbl.filter((persona: Persona) => {
         return (
-          persona.nombre.toLowerCase().match(searchValue) ||
-          persona.email.toLowerCase().match(searchValue)
+          persona.nombre!.toLowerCase().match(searchValue) ||
+          persona.email!.toLowerCase().match(searchValue)
         );
       });
     } else {
@@ -70,50 +71,24 @@ export class Tabla04Component implements OnInit {
     this.refreshPersonas();
   }
 
-
-  sortA(field: string) {
-    if (this.sortField === field) {
-      this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
-    } else {
-      this.sortField = field;
-      this.sortOrder = 'asc';
-    }
-
-    this.personas.sort((a, b) => {
-      const isAsc = this.sortOrder === 'asc';
-      switch (this.sortField) {
-        case 'nombre': return compare(a.nombre, b.nombre, isAsc);
-        case 'email': return compare(a.email, b.email, isAsc);
-        default: return 0;
-      }
-    });
-
-    this.refreshPersonas();
-
-    function compare(a: any, b: any, isAsc: boolean) {
-      return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
-    }
-  }
-
-
-  sort(field: string) {
-    if (!this.camposOrdenables.includes(field)) {
+  sort(campo: string) {
+    if (!this.camposOrdenables.includes(campo)) {
       return;
     }
-    if (this.sortField === field) {
+    if (this.sortField === campo) {
       this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
     } else {
-      this.sortField = field;
+      this.sortField = campo;
       this.sortOrder = 'asc';
     }
 
     this.personas.sort((a, b) => {
-      if (!Object.keys(a).includes(field) || !Object.keys(b).includes(field)) {
+      if (!Object.keys(a).includes(campo) || !Object.keys(b).includes(campo)) {
         return 0;
       }
       const isAsc = this.sortOrder === 'asc';
-      const valueA = a[field];
-      const valueB = b[field];
+      const valueA = a[campo];
+      const valueB = b[campo];
       return compare(valueA, valueB, isAsc);
     });
 
