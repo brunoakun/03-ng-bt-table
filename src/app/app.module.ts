@@ -24,7 +24,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SharedModule,
     NgbModule,
     BrowserAnimationsModule, 
-    ToastrModule.forRoot()
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-left'  
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

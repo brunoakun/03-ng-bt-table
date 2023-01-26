@@ -11,6 +11,7 @@ import { Tabla03Component } from './tabla03/tabla03.component';
 import { Tabla04Component } from './tabla04/tabla04.component';
 
 import { SortIconDirective } from './sort-icon.directive';
+import { BbwkComponent } from './bbwk/bbwk.component';
 
 
 
@@ -20,7 +21,8 @@ import { SortIconDirective } from './sort-icon.directive';
     Tabla02Component,
     Tabla03Component,
     Tabla04Component,
-    SortIconDirective
+    SortIconDirective,
+    BbwkComponent
   ],
   exports: [
     Tabla01Component
