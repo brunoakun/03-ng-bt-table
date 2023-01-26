@@ -18,7 +18,7 @@
 
             <app-loading *ngIf="loading"></app-loading>
 
-            <table *ngIf="!loading" class="table table-bordered table-striped ">
+            <table *ngIf="!loading" class="table table-bordered table-striped table-hover">
                 <thead>
                     <tr>
                         <th width="1%" scope="col">id</th>
@@ -50,25 +50,27 @@
             </table>
 
 
-            <div class="d-flex justify-content-between p-2">
-                <ngb-pagination 
-                    [collectionSize]="totalPersonas" 
-                    [(page)]="page" 
-                    [pageSize]="pageSize" 	
-                    [maxSize]="5"                 
-                    (pageChange)="refreshPersonas()">
-                    <ng-template ngbPaginationPrevious>Anterior</ng-template>
-                    <ng-template ngbPaginationNext>Siguiente</ng-template>
-                </ngb-pagination>
 
-                <div class="ms-2 mt-1">{{totalPersonas}} Registros</div>
+            <div class="d-flex align-items-center flex-wrap bd-highlight">
+                <div class="p-2 bd-highlight"> {{totalPersonas}} Resultados</div>
+                <div class="p-2 bd-highlight">
+                    <select class="form-select form-select-sm " [(ngModel)]="pageSize"
+                        (ngModelChange)="refreshPersonas()">
+                        <option *ngFor="let size of pageSizes" [ngValue]="size">{{size}}</option>
+                    </select>
+                </div>
 
-                <select class="form-select form-select-sm ms-auto" style="width: auto" [(ngModel)]="pageSize"
-                    (ngModelChange)="refreshPersonas()">
-                    <option *ngFor="let size of pageSizes" [ngValue]="size">{{size}}</option>
-                </select>
-                <span class="ms-2">registros por página </span>
+                <div class="p-2 bd-highlight"> por página </div>
+
+                <div class="ms-auto p-2 bd-highlight">
+                    <ngb-pagination [collectionSize]="totalPersonas" [(page)]="page" [pageSize]="pageSize" [maxSize]="5"
+                        (pageChange)="refreshPersonas()">
+                        <ng-template ngbPaginationPrevious>Anterior</ng-template>
+                        <ng-template ngbPaginationNext>Siguiente</ng-template>
+                    </ngb-pagination>
+                </div>
             </div>
+            
 
         </div>
     </div>
