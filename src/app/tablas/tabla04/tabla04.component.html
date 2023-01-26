@@ -51,8 +51,14 @@
 
 
             <div class="d-flex justify-content-between p-2">
-                <ngb-pagination [collectionSize]="totalPersonas" [(page)]="page" [pageSize]="pageSize"
+                <ngb-pagination 
+                    [collectionSize]="totalPersonas" 
+                    [(page)]="page" 
+                    [pageSize]="pageSize" 	
+                    [maxSize]="5"                 
                     (pageChange)="refreshPersonas()">
+                    <ng-template ngbPaginationPrevious>Anterior</ng-template>
+                    <ng-template ngbPaginationNext>Siguiente</ng-template>
                 </ngb-pagination>
 
                 <div class="ms-2 mt-1">{{totalPersonas}} Registros</div>
