@@ -50,8 +50,8 @@
             </table>
 
 
-
-            <div class="d-flex align-items-center flex-wrap bd-highlight">
+            <!-- Paginación -->
+            <div *ngIf="!loading" class="d-flex align-items-center flex-wrap bd-highlight">
                 <div class="p-2 bd-highlight"> {{totalPersonas}} Resultados</div>
                 <div class="p-2 bd-highlight">
                     <select class="form-select form-select-sm " [(ngModel)]="pageSize"
@@ -70,7 +70,7 @@
                     </ngb-pagination>
                 </div>
             </div>
-            
+
 
         </div>
     </div>

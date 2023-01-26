@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { DatosService } from './../../services/datos.service';
 import { Component, OnInit } from '@angular/core';
 import { Persona } from 'src/app/models/persona';
@@ -30,11 +31,15 @@ export class Tabla04Component implements OnInit {
   loading: boolean = false;
   errMsg: string = '';
 
-  constructor(private _datos: DatosService) { }
+  constructor(
+    private _datos: DatosService,
+    private toastr: ToastrService
+  ) { }
 
   ngOnInit() {
     this.loading = true;
     this._datos.getPersonas().subscribe((respuesta) => {
+      this.toastr.success('Datos cargados...', 'Correcto');      
       this.loading = false;
       if (!respuesta || respuesta.error) {
         this.errMsg = respuesta.messages;

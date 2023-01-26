@@ -18,3 +18,22 @@ Then add this line to your styles.css file:<br>
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 
 
+## instalar ngx-toastr
+npm install ngx-toastr@15.2.2<br>
+npm install @angular/animations --save<br>
+
+Importar ambos módulos en el app.module.ts<br>
+ imports: [
+    ...
+    BrowserAnimationsModule, 
+    ToastrModule.forRoot(), 
+  ],
+
+add it to your angular.json
+"styles": [ 
+  "node_modules/ngx-toastr/toastr.css"  
+]
+
+
+
+
