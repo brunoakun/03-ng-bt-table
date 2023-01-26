@@ -12,7 +12,7 @@ Ejemplo de tablas bootstrap5 filtrables y ordenables<br>
 ## instalar ng-bootstrap
 ng add @ng-bootstrap/ng-bootstrap
 ## instalar bootstrap-icons
-npm i bootstrap-icons --save<br>
+npm i bootstrap-icons --save<br> 
 
 Then add this line to your styles.css file:<br>
 @import "~bootstrap-icons/font/bootstrap-icons.css";
